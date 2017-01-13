@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 18:21:55 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/13 18:57:11 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/13 19:24:39 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,21 @@ static char g_base[] = "0123456789abcdef";
 
 static char	*print_addr(void *p)
 {
-	char		*s;
-	long		i;
-	int			len;
-	long		copy;
+	char			*s;
+	unsigned long	i;
+	int				len;
+	unsigned long	copy;
 
 	len = 0;
-	i = (long)p;
+	i = (unsigned long)p;
 	copy = i;
 	while (copy > 0)
 	{
 		len++;
 		copy /= 16;
 	}
+	if (len == 0)
+		return (ft_strdup("0"));
 	s = malloc(len + 1);
 	s[len--] = '\0';
 	while (i > 0)
@@ -46,20 +48,16 @@ static void	print_width(t_param *params, char *adress)
 
 	width = params->width;
 	if (params->flags[1].sign)
-	{
-		ft_putstr("0x");
-		ft_putstr(adress);
-		while (width > 14)
+		while (width > (int)ft_strlen(adress) + 2)
 		{
 			ft_putchar(' ');
 			width--;
 		}
-	}
 	else
 	{
 		if (params->flags[2].sign)
 			ft_putstr("0x");
-		while (width > 14)
+		while (width > (int)ft_strlen(adress) + 2)
 		{
 			if (params->flags[2].sign)
 				ft_putchar('0');
@@ -69,7 +67,6 @@ static void	print_width(t_param *params, char *adress)
 		}
 		if (!params->flags[2].sign)
 			ft_putstr("0x");
-		ft_putstr(adress);
 	}
 }
 
@@ -82,15 +79,20 @@ int			print_adress(t_param *params, va_list ap, char letter)
 		;
 	addr = va_arg(ap, void *);
 	adress = print_addr(addr);
-	if (params->width <= 14)
-		params->width = 14;
-	if (params->width > 14)
+	if (params->width <= (int)ft_strlen(adress) + 2)
 	{
+		params->width = ft_strlen(adress) + 2;
+		ft_putstr("0x");
+		ft_putstr(adress);
+	}
+	else if (params->flags[1].sign)
+	{
+		ft_printf("0x%s", adress);
 		print_width(params, adress);
 	}
 	else
 	{
-		ft_putstr("0x");
+		print_width(params, adress);
 		ft_putstr(adress);
 	}
 	free(adress);

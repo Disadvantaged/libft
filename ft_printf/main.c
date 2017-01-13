@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 16:18:07 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/13 18:53:30 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/13 19:23:14 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		main(void)
 	int		i1;
 	int		i2;
 
-	i1 = ft_printf("%015p\n", &i1);
-	i2 = printf("%015p\n", &i1);
+	i1 = ft_printf("%5p\n", (void *)-0);
+	i2 = printf("%5p\n", (void *)-0);
 	printf("%d %d\n", i1, i2);
 }
