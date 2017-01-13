@@ -6,13 +6,13 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 16:00:34 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/07 13:31:52 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/13 18:40:57 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		g_len = 0;
+static int		g_len = 0;
 
 int		ft_printf(const char *format, ...)
 {
@@ -20,6 +20,7 @@ int		ft_printf(const char *format, ...)
 	int			i;
 
 	i = 0;
+	g_len = 0;
 	va_start(ap, format);
 	while (format[i])
 	{
