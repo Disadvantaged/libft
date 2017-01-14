@@ -6,24 +6,32 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/30 16:48:26 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/07 16:01:41 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/14 15:42:30 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	print_sign(intmax_t val, t_param *params)
+static int	get_size(t_param *params, va_list ap, char letter)
 {
-	if (val < 0)
-		ft_putchar('-');
-	if (val >= 0 && params->flags[0].sign)
-		ft_putchar('+');
-	if (val >= 0 && params->flags[5].sign)
-		ft_putchar(' ');
-	if (val < 0
-		|| (val >= 0 && (params->flags[0].sign || params->flags[5].sign)))
-		return (1);
-	return (0);
+	intmax_t val;
+
+	val = va_arg(ap, intmax_t);
+	if (params->mod == hh)
+		val = (signed char)val;
+	else if (params->mod == h)
+		val = (short)val;
+	else if (params->mod == l || letter == 'D')
+		val = (long)val;
+	else if (params->mod == ll)
+		val = (long long)val;
+	else if (params->mod == j)
+		val = (intmax_t)val;
+	else if (params->mod == z)
+		val = (size_t)val;
+	else
+		val = (int)val;
+	return (val);
 }
 
 static int	print_width(intmax_t val, t_param *params)
@@ -36,7 +44,7 @@ static int	print_width(intmax_t val, t_param *params)
 		|| (val >= 0 && (params->flags[0].sign || params->flags[5].sign)))
 		params->width--;
 	len = ft_nbrlen(val);
-	if (params->flags[2].sign)
+	if (params->flags[2].sign && !params->flags[1].sign)
 		printed += print_sign(val, params);
 	while (params->width > len && params->width > params->precision)
 	{
@@ -47,7 +55,7 @@ static int	print_width(intmax_t val, t_param *params)
 		printed++;
 		params->width--;
 	}
-	if (!params->flags[2].sign)
+	if (!params->flags[2].sign && !params->flags[1].sign)
 		printed += print_sign(val, params);
 	return (printed);
 }
@@ -61,6 +69,8 @@ static int	print_precision(intmax_t val, t_param *params)
 	precision = params->precision;
 	len = ft_nbrlen(val);
 	printed = 0;
+	if (val < 0 && params->flags[1].sign)
+		printed += print_sign(val, params);
 	while (precision > len)
 	{
 		ft_putchar('0');
@@ -102,10 +112,8 @@ int			print_int(t_param *params, va_list ap, char letter)
 	int			printed;
 	intmax_t	val;
 
-	if (letter)
-		;
 	printed = 0;
-	val = get_size(params, ap);
+	val = get_size(params, ap, letter);
 	if (val == 0 && params->precision == 0)
 		return (0);
 	if (params->flags[1].sign)

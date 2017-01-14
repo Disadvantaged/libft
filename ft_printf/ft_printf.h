@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 16:02:48 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/13 18:52:24 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/14 15:40:41 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ typedef	struct	s_conv
 	int		(*fun)(t_param *, va_list, char);
 }				t_conv;
 
-int				get_size(t_param *params, va_list ap);
+int				print_sign(intmax_t val, t_param *params);
+int				print_appendix(t_param *params, char letter, char *value,
+		int *width);
 int				conversion(const char *f, int *pos, t_param *param, va_list ap);
 int				ft_printf(const char *format, ...);
 int				check(const char *format, int *pos, va_list ap);
@@ -68,5 +70,6 @@ int				print_percent(t_param *params, va_list ap, char letter);
 int				print_len(t_param *params, va_list ap, char letter);
 int				print_char(t_param *params, va_list ap, char letter);
 int				print_adress(t_param *params, va_list ap, char letter);
+int				print_unsigned(t_param *params, va_list ap, char letter);
 
 #endif

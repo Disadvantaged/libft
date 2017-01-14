@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/30 15:17:53 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/13 18:53:55 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/14 14:18:14 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,16 @@ t_conv	g_conv[] =
 	{'S', &print_string},
 	{'c', &print_char},
 	{'C', &print_char},
-	{'p', &print_adress}
+	{'p', &print_adress},
+	{'u', &print_unsigned},
+	{'U', &print_unsigned},
+	{'o', &print_unsigned},
+	{'O', &print_unsigned},
+	{'x', &print_unsigned},
+	{'X', &print_unsigned},
 };
 
-int		g_num = 9;
+int		g_num = 15;
 
 int	print_percent(t_param *params, va_list ap, char letter)
 {

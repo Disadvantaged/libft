@@ -5,31 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/03 15:30:50 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/03 15:33:10 by dgolear          ###   ########.fr       */
+/*   Created: 2017/01/14 15:32:15 by dgolear           #+#    #+#             */
+/*   Updated: 2017/01/14 15:32:48 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	get_size(t_param *params, va_list ap)
+int	print_sign(intmax_t val, t_param *params)
 {
-	intmax_t val;
-
-	val = va_arg(ap, intmax_t);
-	if (params->mod == hh)
-		val = (signed char)val;
-	else if (params->mod == h)
-		val = (short)val;
-	else if (params->mod == l)
-		val = (long)val;
-	else if (params->mod == ll)
-		val = (long long)val;
-	else if (params->mod == j)
-		val = (intmax_t)val;
-	else if (params->mod == z)
-		val = (size_t)val;
-	else
-		val = (int)val;
-	return (val);
+	if (val < 0)
+		ft_putchar('-');
+	if (val >= 0 && params->flags[0].sign)
+		ft_putchar('+');
+	if (val >= 0 && params->flags[5].sign)
+		ft_putchar(' ');
+	if (val < 0
+		|| (val >= 0 && (params->flags[0].sign || params->flags[5].sign)))
+		return (1);
+	return (0);
 }

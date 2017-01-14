@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 16:18:07 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/13 19:23:14 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/14 17:00:43 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,14 @@
 
 char	g_base[] = "0123456789abcdef";
 
-void	print_addr(void *p)
-{
-}
-
 int		main(void)
 {
-	char	c = 'h';
+	char	*s;
 	int		i1;
 	int		i2;
 
-	i1 = ft_printf("%5p\n", (void *)-0);
-	i2 = printf("%5p\n", (void *)-0);
-	printf("%d %d\n", i1, i2);
+	printf("%#O\n", 0);
+	ft_printf("%#o\n", 0);
+	printf("%*d\n", -5, 42);
+	ft_printf("%*d\n", -5, 42);
 }
