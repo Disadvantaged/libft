@@ -1,8 +1,8 @@
 NAME  = libftprintf.a
-FT_PRINTF = ft_printf/ft_printf.c ft_printf/checker.c ft_printf/conversion.c \
-			ft_printf/print_int.c ft_printf/print_int1.c ft_printf/print_string.c \
-			ft_printf/print_char.c ft_printf/print_adress.c
-SRC = ft_*.c get_next_line.c $(FT_PRINTF)
+FT_PRINTF = ft_printf.c checker.c conversion.c print_int.c print_string.c \
+			print_char.c print_adress.c print_unsigned.c print_int1.c \
+			print_unsigned1.c
+SRC = ft_*.c get_next_line.c $(addprefix ft_printf/,$(FT_PRINTF))
 FL = -Wall -Werror -Wextra
 OBJ = $(notdir $(SRC:.c=.o))
 $(NAME):

@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/09 09:44:19 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/07 14:51:13 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/14 14:31:20 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ char			*ft_strnstr(const char *s2, const char *s1, size_t len);
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_atoi(const char *s);
+char			*ft_unsigned_itoa_base(uintmax_t val, char *base);
 int				ft_atoi_base(const char *s, int str_base);
 int				ft_isalpha(int ch);
 int				ft_isdigit(int ch);
