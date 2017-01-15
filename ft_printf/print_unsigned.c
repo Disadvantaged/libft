@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/14 12:48:32 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/15 16:04:18 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/15 17:58:33 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,17 +93,17 @@ static int			print_width(t_param *ps, char *value, char l)
 
 int					print_unsigned(t_param *params, va_list ap, char letter)
 {
-	uintmax_t	val;
 	char		*value;
 	int			printed;
+	char		*base;
 
 	printed = 0;
-	val = get_size(params, ap, letter);
-	value = ft_unsigned_itoa_base(val, get_base(letter));
+	base = get_base(letter);
+	value = ft_unsigned_itoa_base(get_size(params, ap, letter), base);
 	if (params->flags[1].sign)
 	{
 		printed += print_precision(params, value, letter);
-		if (!(val == 0 && params->precision == 0))
+		if (!(value[0] == '0' && params->precision == 0))
 			printed += ft_putstr(value);
 		printed += print_width(params, value, letter);
 	}
@@ -111,9 +111,10 @@ int					print_unsigned(t_param *params, va_list ap, char letter)
 	{
 		printed += print_width(params, value, letter);
 		printed += print_precision(params, value, letter);
-		if (!(val == 0 && params->precision == 0))
+		if (!(value[0] == '0' && params->precision == 0))
 			printed += ft_putstr(value);
 	}
 	ft_strdel(&value);
+	ft_strdel(&base);
 	return (printed);
 }
