@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/14 15:31:18 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/14 17:07:18 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/15 16:05:59 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	print_appendix(t_param *ps, char letter, char *v, int *width)
 		ps->flags[3].sign = 0;
 		if (ps->precision == NO_PRECISION)
 			ps->precision = 0;
-		else
-			ps->precision--;
 		(*width)--;
 		return (ft_putstr("0"));
 	}

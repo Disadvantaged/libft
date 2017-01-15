@@ -6,34 +6,34 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/14 12:48:32 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/14 16:39:03 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/15 16:04:18 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-uintmax_t	get_size(t_param *params, va_list ap, char letter)
+static uintmax_t	get_size(t_param *params, va_list ap, char letter)
 {
 	uintmax_t	value;
 
-	if (params->mod == hh)
+	if (params->mod == j)
+		value = (uintmax_t)va_arg(ap, uintmax_t);
+	else if (params->mod == ll)
+		value = (unsigned long long)va_arg(ap, unsigned long long);
+	else if (params->mod == l || letter == 'O' || letter == 'U')
+		value = (unsigned long)va_arg(ap, unsigned long);
+	else if (params->mod == z)
+		value = (size_t)va_arg(ap, size_t);
+	else if (params->mod == hh)
 		value = (unsigned char)va_arg(ap, unsigned int);
 	else if (params->mod == h)
 		value = (unsigned short)va_arg(ap, unsigned int);
-	else if (params->mod == l || letter == 'O' || letter == 'U')
-		value = (unsigned long)va_arg(ap, unsigned long);
-	else if (params->mod == ll)
-		value = (unsigned long long)va_arg(ap, unsigned long long);
-	else if (params->mod == j)
-		value = (uintmax_t)va_arg(ap, uintmax_t);
-	else if (params->mod == z)
-		value = (size_t)va_arg(ap, size_t);
 	else
 		value = (unsigned int)va_arg(ap, unsigned int);
 	return (value);
 }
 
-char		*get_base(char letter)
+static char			*get_base(char letter)
 {
 	if (letter == 'U' || letter == 'u')
 		return (ft_strdup("0123456789"));
@@ -45,7 +45,7 @@ char		*get_base(char letter)
 		return (ft_strdup("0123456789ABCDEF"));
 }
 
-int			print_precision(t_param *params, char *value, char letter)
+static int			print_precision(t_param *params, char *value, char letter)
 {
 	int		printed;
 	int		precision;
@@ -63,7 +63,7 @@ int			print_precision(t_param *params, char *value, char letter)
 	return (printed);
 }
 
-int			print_width(t_param *ps, char *value, char l)
+static int			print_width(t_param *ps, char *value, char l)
 {
 	int		printed;
 	int		width;
@@ -91,7 +91,7 @@ int			print_width(t_param *ps, char *value, char l)
 	return (printed);
 }
 
-int			print_unsigned(t_param *params, va_list ap, char letter)
+int					print_unsigned(t_param *params, va_list ap, char letter)
 {
 	uintmax_t	val;
 	char		*value;

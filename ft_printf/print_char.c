@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 13:47:27 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/07 14:35:41 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/15 16:10:15 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	print_width(t_param *params)
 	int		width;
 
 	width = params->width;
+	if (width == 0)
+		params->width = 1;
 	while (width > 1)
 	{
 		if (params->flags[2].sign)
