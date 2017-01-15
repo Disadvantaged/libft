@@ -1,4 +1,4 @@
-NAME  = libftprintf.a
+NAME  = libftt.a
 FT_PRINTF = ft_printf.c checker.c conversion.c print_int.c print_string.c \
 			print_char.c print_adress.c print_unsigned.c print_int1.c \
 			print_unsigned1.c
