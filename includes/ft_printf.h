@@ -6,14 +6,14 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 16:02:48 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/15 16:57:18 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/17 15:20:37 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../libft.h"
+# include "libft.h"
 # include <stdarg.h>
 
 # define TRUE 1

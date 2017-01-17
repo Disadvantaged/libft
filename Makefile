@@ -1,22 +1,68 @@
-NAME  = libftt.a
-FT_PRINTF = ft_printf.c checker.c conversion.c print_int.c print_string.c \
-			print_char.c print_adress.c print_unsigned.c print_int1.c \
-			print_unsigned1.c
-SRC = ft_*.c get_next_line.c $(addprefix ft_printf/,$(FT_PRINTF))
-FL = -Wall -Werror -Wextra
-OBJ = $(notdir $(SRC:.c=.o))
-$(NAME):
-	gcc $(FL) -c $(SRC)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: pdobos <marvin@42.fr>                      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/01/10 13:32:01 by pdobos            #+#    #+#              #
+#    Updated: 2017/01/17 15:20:05 by dgolear          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = libftprintf.a
+
+C_INCLUDE_PATH += libft/includes/ includes/
+
+CFLAGS += -Wall -Wextra -Werror
+
+CFLAGS += $(foreach d, $(C_INCLUDE_PATH), -I$d)
+
+SRCS = ft_printf/ft_printf.c \
+	   ft_printf/print_adress.c \
+	   ft_printf/print_unsigned.c \
+	   ft_printf/print_unsigned1.c \
+	   ft_printf/print_int.c \
+	   ft_printf/print_int1.c \
+	   ft_printf/checker.c \
+	   ft_printf/conversion.c \
+	   ft_printf/print_char.c \
+	   ft_printf/print_string.c \
+
+LIBFT_PATH ?= libft/
+
+OBJS = $(patsubst ft_printf/%.c,obj/%.o,$(SRCS))
+
+CP = cp
+
+RM = rm -f
+
 all: $(NAME)
+
+$(OBJS): | obj
+
+obj:
+	@mkdir -p $@
+
+obj/%.o: ft_printf/%.c
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+
+$(LIBFT_PATH)/libft.a:
+	$(MAKE) -C $(LIBFT_PATH)
+
+$(NAME): $(LIBFT_PATH)/libft.a $(OBJS)
+	$(CP) $(LIBFT_PATH)/libft.a $(NAME)
+	$(AR) -rcs $(NAME) $^
+
 clean:
-	rm -f $(OBJ)
+	$(RM) $(OBJS)
+	$(MAKE) -C $(LIBFT_PATH) clean
+
 fclean: clean
-	rm -f $(NAME)
-re: fclean
-	gcc $(FL) -c $(SRC)
-	ar rc $(NAME) $(OBJ)
-rec: re
-	rm -f $(OBJ)
-.PHONY: clean
+	$(RM) $(NAME)
+	$(MAKE) -C $(LIBFT_PATH) fclean
+
+re: fclean all
+
+
+.PHONY: all clean fclean re $(LIBFT_PATH)/libft.a
