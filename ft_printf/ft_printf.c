@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 16:00:34 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/18 14:49:22 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/18 14:54:57 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int		g_len = 0;
 void	find_color(const char *format, int *i)
 {
 	int		j;
-	char 	*str;
+	char	*str;
 	char	*tmp;
 	char	temp[2];
 	int		color;
