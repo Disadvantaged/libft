@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putwchar.c                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/07 13:57:53 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/18 11:51:50 by dgolear          ###   ########.fr       */
+/*   Created: 2017/01/17 15:31:43 by dgolear           #+#    #+#             */
+/*   Updated: 2017/01/18 12:02:56 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_printf.h"
 
-int		ft_putwchar(wchar_t c)
+int		main(void)
 {
-	return(ft_putwchar_fd(c, 1));
+	int		i1;
+	int		i2;
+
+	i1 = 0;
+	i1 = printf("%30S\n", "我是一只猫。");
+	i2 = ft_printf("%30S\n", "我是一只猫。");
+	printf("%d %d\n", i1, i2);
 }

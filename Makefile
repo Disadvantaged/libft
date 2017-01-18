@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pdobos <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: dgolear <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/01/10 13:32:01 by pdobos            #+#    #+#              #
-#    Updated: 2017/01/17 15:20:05 by dgolear          ###   ########.fr        #
+#    Created: 2017/01/10 13:32:01 by dgolear           #+#    #+#              #
+#    Updated: 2017/01/18 12:27:24 by dgolear          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,5 +64,8 @@ fclean: clean
 
 re: fclean all
 
+rec: fclean all
+	$(RM) $(OBJS)
+	$(MAKE) -C $(LIBFT_PATH) clean
 
 .PHONY: all clean fclean re $(LIBFT_PATH)/libft.a

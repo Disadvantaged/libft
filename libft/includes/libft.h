@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/09 09:44:19 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/14 14:31:20 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/18 11:50:45 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,16 +75,16 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
 char			*ft_itoa(intmax_t n);
-void			ft_putchar(char c);
-void			ft_putwchar(wchar_t c);
+int				ft_putchar(char c);
+int				ft_putwchar(wchar_t c);
 int				ft_putstr(char const *s);
 int				ft_putnstr(char *s, int n);
 int				ft_putnwstr(wchar_t *s, int n);
 int				ft_putwstr(wchar_t *s);
 int				ft_putendl(char const *s);
 void			ft_putnbr(intmax_t n);
-void			ft_putchar_fd(char c, int fd);
-void			ft_putwchar_fd(wchar_t c, int fd);
+int				ft_putchar_fd(char c, int fd);
+int				ft_putwchar_fd(wchar_t c, int fd);
 int				ft_putstr_fd(char const *s, int fd);
 int				ft_putwstr_fd(wchar_t *s, int fd);
 int				ft_putendl_fd(char const *s, int fd);

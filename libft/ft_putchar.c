@@ -6,13 +6,14 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/09 09:41:45 by dgolear           #+#    #+#             */
-/*   Updated: 2016/10/23 15:29:41 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/18 11:51:10 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+int		ft_putchar(char c)
 {
 	write(1, &c, 1);
+	return (1);
 }

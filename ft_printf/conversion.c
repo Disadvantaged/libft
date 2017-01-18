@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/30 15:17:53 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/15 17:30:51 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/18 11:55:44 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,16 @@ int	conversion(const char *format, int *pos, t_param *params, va_list ap)
 		}
 		i++;
 	}
-	return (0);
+	if (params->width > 1)
+		printed = params->width - 1;
+	else
+		printed = 0;
+	if (params->flags[1].sign && params->width > 1)
+		printed += ft_putchar(format[(*pos)++]);
+	while (params->width > 1)
+		if (!params->flags[2].sign)
+			params->width -= ft_putstr(" ");
+		else
+			params->width -= ft_putstr("0");
+	return (printed);
 }
