@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/23 16:00:34 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/18 14:54:57 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/01/19 17:58:39 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,21 @@ int		ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] == '{')
+		{
 			find_color(format, &i);
+			continue;
+		}
 		if (format[i] != '%')
 		{
 			ft_putchar(format[i]);
 			g_len++;
 			i++;
 		}
-		else if (!format[++i] || check(format, &i, ap) < 0)
-			;
+		else
+		{
+			i++;
+			check(format, &i, ap);
+		}
 	}
 	va_end(ap);
 	return (g_len);
