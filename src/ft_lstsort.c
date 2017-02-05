@@ -6,13 +6,13 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/05 11:47:43 by dgolear           #+#    #+#             */
-/*   Updated: 2017/02/05 12:31:55 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/02/05 13:10:32 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	split_list(t_list *head, t_list **front, t_list **back)
+static void		split_list(t_list *head, t_list **front, t_list **back)
 {
 	t_list	*slow;
 	t_list	*fast;
@@ -35,13 +35,13 @@ static void	split_list(t_list *head, t_list **front, t_list **back)
 				fast = fast->next;
 			}
 		}
-	*front = head;
-	*back = slow->next;
-	slow->next = NULL;
+		*front = head;
+		*back = slow->next;
+		slow->next = NULL;
 	}
 }
 
-static t_list	*merge_sort(t_list *a, t_list *b,
+static t_list	*merge_sort(t_list *a, t_list *b, \
 							int (*compare)(const void *, const void *))
 {
 	t_list	*result;
@@ -62,7 +62,9 @@ static t_list	*merge_sort(t_list *a, t_list *b,
 	}
 	return (result);
 }
-int		ft_lstsort(t_list **head, int (*compare)(const void *, const void *))
+
+int				ft_lstsort(t_list **head, \
+		int (*compare)(const void *, const void *))
 {
 	t_list	*node;
 	t_list	*a;
