@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putwchar.c                                      :+:      :+:    :+:   */
+/*   ft_intcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/07 13:57:53 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/25 16:23:04 by dgolear          ###   ########.fr       */
+/*   Created: 2017/02/05 12:44:03 by dgolear           #+#    #+#             */
+/*   Updated: 2017/02/05 12:45:26 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_putwchar(wchar_t c)
+int		ft_intcmp(const void *a, const void *b)
 {
-	return (ft_putwchar_fd(c, 1));
+	return (*(int *)a - *(int *)b);
 }

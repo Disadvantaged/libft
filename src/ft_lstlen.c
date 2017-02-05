@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putwchar.c                                      :+:      :+:    :+:   */
+/*   ft_lstlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/07 13:57:53 by dgolear           #+#    #+#             */
-/*   Updated: 2017/01/25 16:23:04 by dgolear          ###   ########.fr       */
+/*   Created: 2017/01/27 14:28:06 by dgolear           #+#    #+#             */
+/*   Updated: 2017/01/27 14:30:14 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_putwchar(wchar_t c)
+int		ft_lstlen(t_list *lst)
 {
-	return (ft_putwchar_fd(c, 1));
+	int		i;
+	t_list	*node;
+
+	node = lst;
+	i = 0;
+	while (node != NULL)
+	{
+		i++;
+		node = node->next;
+	}
+	return (i);
 }

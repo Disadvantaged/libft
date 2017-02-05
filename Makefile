@@ -48,6 +48,7 @@ SRC = ft_atoi.c \
 	   ft_strchr.c \
 	   ft_strclr.c \
 	   ft_strcmp.c \
+	   ft_intcmp.c \
 	   ft_strcpy.c \
 	   ft_strdel.c \
 	   ft_strdup.c \
@@ -85,7 +86,9 @@ SRC = ft_atoi.c \
 	   ft_printf/print_int1.c \
 	   ft_printf/print_char.c \
 	   ft_printf/print_string.c \
-	   ft_printf/print_adress.c
+	   ft_printf/print_adress.c \
+	   ft_lstlen.c \
+	   ft_lstsort.c
 SRCS = $(addprefix src/, $(SRC))
 RM = rm -f
 OBJS = $(patsubst src/%.c, obj/%.o, $(SRCS))
