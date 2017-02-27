@@ -6,11 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/05 11:47:43 by dgolear           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2017/02/05 13:10:32 by dgolear          ###   ########.fr       */
-=======
-/*   Updated: 2017/02/22 17:18:50 by dgolear          ###   ########.fr       */
->>>>>>> 0930dd9db40daf54b2ea4bb77e9c219d3560b74b
+/*   Updated: 2017/02/27 13:52:17 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +42,7 @@ static void		split_list(t_list *head, t_list **front, t_list **back)
 }
 
 static t_list	*merge_sort(t_list *a, t_list *b, \
-<<<<<<< HEAD
-							int (*compare)(const void *, const void *))
-=======
 							intmax_t (*compare)(const void *, const void *))
->>>>>>> 0930dd9db40daf54b2ea4bb77e9c219d3560b74b
 {
 	t_list	*result;
 
@@ -72,11 +64,7 @@ static t_list	*merge_sort(t_list *a, t_list *b, \
 }
 
 int				ft_lstsort(t_list **head, \
-<<<<<<< HEAD
-		int (*compare)(const void *, const void *))
-=======
 		intmax_t (*compare)(const void *, const void *))
->>>>>>> 0930dd9db40daf54b2ea4bb77e9c219d3560b74b
 {
 	t_list	*node;
 	t_list	*a;
