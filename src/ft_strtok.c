@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/09 10:00:48 by dgolear           #+#    #+#             */
-/*   Updated: 2017/03/05 13:03:02 by dgolear          ###   ########.fr       */
+/*   Created: 2017/03/06 14:41:07 by dgolear           #+#    #+#             */
+/*   Updated: 2017/03/06 14:58:14 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_putstr_fd(char const *s, int fd)
+char	*ft_strtok_r(char *str, const char *delim, char **nextp)
 {
-	int		i;
+	char *ret;
 
-	if (s == NULL)
+	if (str == NULL)
 	{
-		write(fd, "(null)", 6);
-		return (6);
+		str = *nextp;
 	}
-	i = 0;
-	while (s[i] != '\0')
-	{
-		ft_putchar_fd(s[i], fd);
-		i++;
-	}
-	return (i);
+	str += ft_strspn(str, delim);
+	if (*str == '\0')
+		return (NULL);
+	ret = str;
+	str += ft_strcspn(str, delim);
+	if (*str)
+		*str++ = '\0';
+	*nextp = str;
+	return (ret);
 }

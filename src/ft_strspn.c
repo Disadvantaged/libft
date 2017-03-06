@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strspn.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/09 10:00:48 by dgolear           #+#    #+#             */
-/*   Updated: 2017/03/05 13:03:02 by dgolear          ###   ########.fr       */
+/*   Created: 2017/03/06 14:47:47 by dgolear           #+#    #+#             */
+/*   Updated: 2017/03/06 14:51:40 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_putstr_fd(char const *s, int fd)
+size_t		ft_strspn(const char *s1, const char *s2)
 {
 	int		i;
 
-	if (s == NULL)
-	{
-		write(fd, "(null)", 6);
-		return (6);
-	}
 	i = 0;
-	while (s[i] != '\0')
-	{
-		ft_putchar_fd(s[i], fd);
+	while (s1[i] && ft_strchr(s2, s1[i]) != NULL)
 		i++;
-	}
 	return (i);
 }
