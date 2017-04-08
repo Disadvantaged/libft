@@ -5,4 +5,4 @@ projects.
 Through this project, we also give you the opportunity to expand the list of functions
 with your own. Take the time to expand your libft throughout the year.
 
-Final grade: 116/125
+Final grade: 116
