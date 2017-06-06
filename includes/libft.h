@@ -6,7 +6,7 @@
 /*   By: dgolear <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/09 09:44:19 by dgolear           #+#    #+#             */
-/*   Updated: 2017/03/06 14:58:05 by dgolear          ###   ########.fr       */
+/*   Updated: 2017/06/06 19:21:26 by dgolear          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 
+int				ft_isnumber(char *s);
 size_t			ft_strspn(const char *s1, const char *s2);
 size_t			ft_strcspn(const char *s1, const char *s2);
 char			*ft_strtok_r(char *str, const char *delim, char **nextp);

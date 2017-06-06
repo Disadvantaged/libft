@@ -1,6 +1,7 @@
 NAME  = libft.a
 FLAGS = -Wall -Werror -Wextra -I./includes
-SRC = ft_atoi.c \
+SRC =  ft_atoi.c \
+	   ft_isnumber.c \
 	   ft_atoi_base.c \
 	   ft_bzero.c \
 	   ft_isalnum.c \
